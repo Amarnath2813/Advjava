@@ -29,7 +29,7 @@ public class DataServlet extends HttpServlet {
 		SessionFactory factory=configuration.buildSessionFactory();
 		Session session=factory.openSession();
 		String location1=request.getParameter("location");
-		SelectionQuery<?> query=session.createSelectionQuery("select dname from dept where loc=:location1");
+		SelectionQuery<?> query=session.createSelectionQuery("from dept d where d.loc=:location1");
 		query.setParameter("location1",location1);
 		List<?> mylist=(List<?>)query.list();
 		System.out.println(mylist);
